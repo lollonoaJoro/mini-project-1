@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "../style/NarBar.scss";
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -9,9 +10,9 @@ export default function NavBar() {
 
   return (
     <nav className="navbar">
-      <div className="logo" onClick={handleClick}>
-        재민
-      </div>
+      <p className="logo" onClick={handleClick}>
+        재민무비
+      </p>
       <div>
         <input />
       </div>
