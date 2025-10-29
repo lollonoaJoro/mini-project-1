@@ -12,7 +12,7 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<App />} />
-          <Route path="/detail" element={<MovieDetailData />} />
+          <Route path="/detail/:movieId" element={<MovieDetailData />} />
         </Route>
       </Routes>
     </BrowserRouter>
