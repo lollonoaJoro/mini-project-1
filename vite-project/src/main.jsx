@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App.jsx";
 import MovieDetailData from "./details/MovieDetailData.jsx";
 import Layout from "./Layout.jsx";
+import Navbar from "./details/Navbar.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

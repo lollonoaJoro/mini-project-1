@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "./details/NarBar";
+import NavBar from "./details/Navbar";
+import Debounce from "./Debounce.jsx";
 
 function Layout() {
   return (

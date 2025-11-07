@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import "../style/NarBar.scss";
+import { useNavigate, Link } from "react-router-dom";
+import "../style/Navbar.scss";
 
-export default function NavBar() {
+export default function Navbar() {
   const navigate = useNavigate();
 
   function handleClick() {
@@ -9,11 +9,14 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="navbar">
+    <nav className="Navbar">
       <p className="logo" onClick={handleClick}>
         재민무비
       </p>
       <div>
+        <Link to="/">홈</Link>
+        <Link to="/movie">영화</Link>
+        <Link to="/about">소개</Link>
         <input />
       </div>
       <div className="btn">
