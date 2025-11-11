@@ -3,6 +3,7 @@ import MovieCard from "./details/MovieCard";
 import "./style/App.scss";
 import React from "react";
 import { Router } from "react-router-dom";
+//import { useParams } from "react-router-dom";
 //import debounce from "./Debounce.jsx";
 
 export default function App() {
@@ -10,7 +11,11 @@ export default function App() {
   const url =
     "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
   const [movies, setMovies] = useState([]);
-  console.log(movies);
+  //console.log(movies);
+  //const { id } = useParams;
+
+  //console.log(id);
+
   //const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -28,6 +33,7 @@ export default function App() {
         setMovies(data.results);
       });
   });
+
   return (
     <div className="movie-list">
       <h1>Movie List</h1>

@@ -1,4 +1,3 @@
-import movieDetailDatas from "../Data/movieDetailData.json";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -6,6 +5,9 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 function MovieDetailData() {
   const [movies, setmovies] = useState([]);
   const { movieId } = useParams();
+  console.log(movies);
+  console.log(movies.overview);
+
   useEffect(() => {
     const options = {
       method: "GET",
@@ -24,6 +26,7 @@ function MovieDetailData() {
       }) //data.results.filter((tmdbmoive) => tmdbmoive.adult === false)
       .catch((err) => console.error(err));
   }, [movieId]);
+
   return (
     <>
       <div className="detail-poster">
@@ -35,6 +38,7 @@ function MovieDetailData() {
       <div className="detail-vote_average">
         <div className="detail-title">{movies.title}</div>
         평점 : {movies.vote_average}
+        <p>{movies.overview}</p>
       </div>
     </>
   );
