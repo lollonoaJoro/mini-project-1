@@ -1,4 +1,4 @@
-import.meta.env.VITE_TMDB_API_KEY;
+const APPLICATION_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 const url = "https://api.themoviedb.org/3/person/popular?language=en-US&page=1";
 const options = {

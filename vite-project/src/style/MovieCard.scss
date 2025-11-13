@@ -1,5 +1,5 @@
 .movie-card {
-  width: 200px;
+  width: 100px;
   margin: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -8,7 +8,11 @@
 }
 
 .poster {
-  width: 100%;
+  width: 50%;
   height: auto;
   cursor: pointer;
+}
+
+.overview {
+  width: 50%;
 }

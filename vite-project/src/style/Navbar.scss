@@ -9,7 +9,16 @@
 
 .logo {
   color: #ecf0f1;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+}
+.navbar-controller {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: black;
+  input {
+    background-color: white;
+  }
 }

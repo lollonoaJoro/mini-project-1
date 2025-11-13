@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "../style/MovieDetailData.scss";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 function MovieDetailData() {
@@ -28,7 +29,7 @@ function MovieDetailData() {
   }, [movieId]);
 
   return (
-    <>
+    <div className="detail-card">
       <div className="detail-poster">
         <img
           src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
@@ -40,7 +41,7 @@ function MovieDetailData() {
         평점 : {movies.vote_average}
         <p>{movies.overview}</p>
       </div>
-    </>
+    </div>
   );
 }
 
