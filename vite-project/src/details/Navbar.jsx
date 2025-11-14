@@ -1,8 +1,8 @@
 import { useNavigate, Link } from "react-router-dom";
 import "../style/Navbar.scss";
 import { useState } from "react";
-import useDebounce from "./useDebounce";
 import { useEffect } from "react";
+import useDebounce from "../hooks/useDebounce";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 export default function Navbar() {
@@ -10,9 +10,8 @@ export default function Navbar() {
   const [query, setQuery] = useState("");
   const [debouncedValue, setdebouncedValue] = useState("");
   const debouncedQuery = useDebounce(query);
-  const [movies, use] = useState("");
+  const [movies, setMovies] = useState("");
   console.log(debouncedQuery);
-
 
   useEffect(() => {
     const option = {
@@ -22,19 +21,19 @@ export default function Navbar() {
         Authorization: `bearer ${API_KEY}`,
       },
     };
-    const params = new URLSearchParams({  
-        include_adult: false,
-        language: "en-US",
-        page: 1,
-        query: query,
-      });
-      const url = `https://api.themoviedb.org/3/search/movie?${params.toString()}`;
+    const params = new URLSearchParams({
+      include_adult: false,
+      language: "en-US",
+      page: 1,
+      query: query,
+    });
+    const url = `https://api.themoviedb.org/3/search/movie?${params.toString()}`;
     fetch(url, option)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.results);
       });
-  });
+  }, []);
   return (
     <nav className="Navbar">
       <p className="logo" onClick={() => navigate("/")}>

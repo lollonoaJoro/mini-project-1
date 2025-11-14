@@ -1,5 +1,5 @@
-import App from "./App.jsx";
-import Layout from "./Layout.jsx";
+import App from "../App.jsx";
+import Layout from "../Layout.jsx";
 
 export default function Debounce(callback, delay) {
   let timer;
