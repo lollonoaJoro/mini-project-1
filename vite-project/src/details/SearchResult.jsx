@@ -1,31 +1,36 @@
-export default function SearchResult() {
-  const [query, setQuery] = useState("");
-  const [debouncedValue, setdebouncedValue] = useState("");
-  const debouncedQuery = useDebounce(query);
-  const [movies, setMovies] = useState("");
-  console.log(debouncedQuery);
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import MovieCard from "./MovieCard";
 
+export default function SearchResult() {
+  const [movies, setMovies] = useState([]);
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+  let [searchParams] = useSearchParams();
+  const queryParam = searchParams.get("query");
+  console.log(queryParam);
+  console.log(movies);
   useEffect(() => {
-    const option = {
+    const url = `https://api.themoviedb.org/3/search/movie?query=${queryParam}&include_adult=false&language=en-US&page=1`;
+    const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: `bearer ${API_KEY}`,
+        Authorization: `Bearer ${API_KEY}`,
       },
     };
-    const params = new URLSearchParams({
-      include_adult: false,
-      language: "en-US",
-      page: 1,
-      query: query,
-    });
-    const url = `https://api.themoviedb.org/3/search/movie?${params.toString()}`;
-    fetch(url, option)
+
+    fetch(url, options)
       .then((res) => res.json())
-      .then((data) => {
-        setMovies(data.results);
-      });
+      .then((data) => setMovies(data.results))
+      .catch((err) => console.error(err));
   }, []);
 
-  return <div></div>;
+  return (
+    <div className="movie-list">
+      <h1>Search Result</h1>
+      {movies?.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} />
+      ))}
+    </div>
+  );
 }

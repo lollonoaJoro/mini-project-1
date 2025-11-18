@@ -1,39 +1,15 @@
 import { useNavigate, Link } from "react-router-dom";
 import "../style/Navbar.scss";
 import { useState } from "react";
-import { useEffect } from "react";
-import useDebounce from "../hooks/useDebounce";
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+// import useDebounce from "../hooks/useDebounce";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
-  const [debouncedValue, setdebouncedValue] = useState("");
-  const debouncedQuery = useDebounce(query);
-  const [movies, setMovies] = useState("");
-  console.log(debouncedQuery);
+  // const [debouncedValue, setdebouncedValue] = useState("");
+  // const debouncedQuery = useDebounce(query);
+  // console.log(debouncedQuery);
 
-  useEffect(() => {
-    const option = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `bearer ${API_KEY}`,
-      },
-    };
-    const params = new URLSearchParams({
-      include_adult: false,
-      language: "en-US",
-      page: 1,
-      query: query,
-    });
-    const url = `https://api.themoviedb.org/3/search/movie?${params.toString()}`;
-    fetch(url, option)
-      .then((res) => res.json())
-      .then((data) => {
-        setMovies(data.results);
-      });
-  }, []);
   return (
     <nav className="Navbar">
       <p className="logo" onClick={() => navigate("/")}>
@@ -50,7 +26,12 @@ export default function Navbar() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button type="submit">검색</button>
+        <button
+          type="button"
+          onClick={() => navigate(`/search?query=${query}`)}
+        >
+          검색
+        </button>
       </div>
       <div className="btn">
         <button>로그인</button>
