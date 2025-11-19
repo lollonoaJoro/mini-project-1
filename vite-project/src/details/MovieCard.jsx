@@ -8,9 +8,9 @@ function MovieCard({ movie }) {
     navigate(`/detail/${movie.id}`);
   };
   return (
-    <div className="movie-card">
+    <div className="movie-card gap-2">
       <img
-        className="poster"
+        className="w-60"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}
         onClick={handleClick}

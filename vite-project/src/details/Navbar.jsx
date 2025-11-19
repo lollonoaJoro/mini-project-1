@@ -33,7 +33,7 @@ export default function Navbar() {
           검색
         </button>
       </div>
-      <div className="btn">
+      <div className="px=8...5 py-4">
         <button>로그인</button>
         <button>회원가입</button>
       </div>

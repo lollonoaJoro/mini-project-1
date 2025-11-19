@@ -35,8 +35,8 @@ export default function App() {
   });
 
   return (
-    <div className="movie-list">
-      <h1>Movie List</h1>
+    <div className="flex flex-wrap gap-4 ">
+      <h1 className="w-full text-3xl">Movie List</h1>
       {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}
